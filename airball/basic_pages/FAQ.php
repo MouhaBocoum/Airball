@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="nav_pc">
-        <h1><a href="http://localhost:8888/airball/basic_pages/index_airball.php"><img src="style_connect/styles/img/airball.png" width="160" height="60" alt="Infinite Measures"></a></h1>
+        <h1><a href="http://localhost:8888/airball/basic_pages/index_airball.php"><img src="../style_connect/styles/img/airball.png" width="160" height="60" alt="Infinite Measures"></a></h1>
         <ul class="nav_bar_pc">
             <li><a href="http://localhost:8888/airball/basic_pages/index_airball.php">Accueil</a>
                 <div></div>
