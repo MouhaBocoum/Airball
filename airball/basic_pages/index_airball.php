@@ -110,6 +110,6 @@ if(isset($_GET['password-token'])){
     <div class="footer">
         <p>&copy;2021 By Airball</p>
     </div>
-    <script src="style_connect/styles/js/script_airball.js"></script>
+    <script src="../style_connect/styles/js/script_airball.js"></script>
 </body>
 </html>
