@@ -1,4 +1,4 @@
-<?php require_once("../style_connect/controller/connect_airball.php");?>
+<?php require_once("../../style_connect/controller/connect_airball.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

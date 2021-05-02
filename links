@@ -17,11 +17,15 @@ http://localhost:8888/airball/password_change_pages/reset_password.php
 
 
 profile_admin:
-http://localhost:8888/airball/profile_pages/profile_admin.php
+http://localhost:8888/airball/profile_pages/profile_admin/profile_admin.php
 profile_gestio:
-http://localhost:8888/airball/profile_pages/profile_gestio.php
+http://localhost:8888/airball/profile_pages/profile_gestio/profile_gestio.php
+
 profile_joueur:
-http://localhost:8888/airball/profile_pages/profile_joueur.php
+http://localhost:8888/airball/profile_pages/profile_joueur/profile_joueur.php
+edit_profile:
+http://localhost:8888/airball/profile_pages/profile_joueur/edit_profile.php
+
 profile_not_verified:
 http://localhost:8888/airball/profile_pages/profile_not_verified.php
 
@@ -33,3 +37,4 @@ style_password:
 http://localhost:8888/airball/style_connect/styles/style_password.css
 style_profile:
 http://localhost:8888/airball/style_connect/styles/style_profile.css
+

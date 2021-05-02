@@ -121,7 +121,7 @@ if (isset($_POST["sign_in_btn"])) {
 			$_SESSION['username']=$user['username'];
 			$_SESSION['email']=$user['email'];
 			$_SESSION['veridied']=$user['verified'];
-			header('location:http://localhost:8888/airball/profile_pages/profile_joueur.php');
+			header('location:http://localhost:8888/airball/profile_pages/profile_joueur/profile_joueur.php');
 			exit();
 		}
 		elseif (password_verify($user_password,$user['user_password']) AND $user['verified']==2) { 
@@ -130,7 +130,7 @@ if (isset($_POST["sign_in_btn"])) {
 			$_SESSION['username']=$user['username'];
 			$_SESSION['email']=$user['email'];
 			$_SESSION['veridied']=$user['verified'];
-			header('location:http://localhost:8888/airball/profile_pages/profile_gestio.php');
+			header('location:http://localhost:8888/airball/profile_pages/profile_gestio/profile_gestio.php');
 			exit();
 		}
 		elseif(!password_verify($user_password,$user['user_password'])){
@@ -160,7 +160,7 @@ function verifyUser($token){
 			$_SESSION['username']=$user['username'];
 			$_SESSION['email']=$user['email'];
 			$_SESSION['veridied']=1;
-			header('location:http://localhost:8888/airball/profile_pages/profile_joueur.php');
+			header('location:http://localhost:8888/airball/profile_pages/profile_joueur/profile_joueur.php');
 			exit(0);
 		}
 	}
@@ -182,7 +182,7 @@ function verifyUserGestio($token){
 			$_SESSION['username']=$user['username'];
 			$_SESSION['email']=$user['email'];
 			$_SESSION['veridied']=2;
-			header('location:http://localhost:8888/airball/profile_pages/profile_gestio.php');
+			header('location:http://localhost:8888/airball/profile_pages/profile_gestio/profile_gestio.php');
 			exit(0);
 		}
 	}
