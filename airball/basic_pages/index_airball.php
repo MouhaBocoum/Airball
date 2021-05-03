@@ -57,7 +57,7 @@ if(isset($_GET['password-token'])){
                     <input type="password" placeholder="Confirmer mot de passe" name="new_user_password_confirm">
                     <button type="submit" name="sign_up_btn">S'inscrire</button>
                     <?php if (count($errors_sign_up)>0):?>
-                        <?php foreach($errors_sign_up as $error): ?>
+                        <?php foreach($errors_sign_up as $error):?>
                         <li class="alert"><?php echo $error; ?></li>
                         <?php endforeach;?>
                     <?php endif ;?>    

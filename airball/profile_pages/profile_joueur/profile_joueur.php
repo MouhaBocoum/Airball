@@ -11,10 +11,10 @@
 </head>
 <body>
     <div class="header">
-        <img src="../../style_connect/styles/img/airball.png" alt="Airball" width="160" height="60">
+        <a href="http://localhost:8888/airball/basic_pages/index_airball.php"><img src="../../style_connect/styles/img/airball.png" alt="Airball" width="160" height="60"></a>
         <div class="links">
             <a href="http://localhost:8888/airball/profile_pages/profile_joueur/edit_profile.php">Éditer mon profil</a>
-            <a href="http://localhost:8888/airball/basic_pages/index_airball.php">Me déconnecter</a>
+            <a href="http://localhost:8888/airball/basic_pages/index_airball.php" name="logout">Me déconnecter</a>
         </div>
     </div>
     <div class="container">
@@ -24,15 +24,15 @@
             </div>
             <div class=info_joueur_left>
                 <label for="prenom">Nom:</label>
-                <h1>Momo</h1>
+                <h1><?php echo $_SESSION['nom']?></h1>
                 <label for="nom">Prénom:</label>
-                <h1>Bocoum</h1>
+                <h1><?php echo $_SESSION['prenom']?></h1>
                 <label for="age">Âge:</label>
-                <h1>21ans</h1>
+                <h1><?php echo $_SESSION['age']?> ans</h1>
                 <label for="naissance">Date de naissance:</label>
-                <h1>25/02/2000</h1>
+                <h1><?php echo $_SESSION['naissance']?></h1>
                 <label for="addresse">Addresse:</label>
-                <h1>Dkr negro</h1>
+                <h1><?php echo $_SESSION['addresse']?></h1>
             </div>
         </div>
         <div class="info_joueur">
