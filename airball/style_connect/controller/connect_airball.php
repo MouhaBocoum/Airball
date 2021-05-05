@@ -98,10 +98,10 @@ if (isset($_POST["sign_in_btn"])) {
 		//now we check if the password is valid
 		if (password_verify($user_password,$user['user_password']) AND $user['verified']==1) { 
 			//We log the new user into his profile page
+			$_SESSION['id']=$user['id'];
 			$_SESSION['token']=$user['token'];
 			$_SESSION['username']=$user['username'];
 			$_SESSION['email']=$user['email'];
-			$_SESSION['veridied']=$user['verified'];
 			$_SESSION['nom']=$user_profile['nom'];
 			$_SESSION['prenom']=$user_profile['prenom'];
 			$_SESSION['age']=$user_profile['age'];
@@ -112,10 +112,10 @@ if (isset($_POST["sign_in_btn"])) {
 		}
 		elseif (password_verify($user_password,$user['user_password']) AND $user['verified']==2) { 
 			//We log the new user into his profile page
+			$_SESSION['id']=$user['id'];
 			$_SESSION['token']=$user['token'];
 			$_SESSION['username']=$user['username'];
 			$_SESSION['email']=$user['email'];
-			$_SESSION['veridied']=$user['verified'];
 			$_SESSION['nom']=$user_profile['nom'];
 			$_SESSION['prenom']=$user_profile['prenom'];
 			$_SESSION['age']=$user_profile['age'];
@@ -132,6 +132,7 @@ if (isset($_POST["sign_in_btn"])) {
 		}
 	}
 }
+
 //this function will be used to verify the token of the user
 //if the token that we got from our link can be found on the list of tokens on our database then a user is trying to verify his mail 
 function verifyUser($token){
@@ -142,6 +143,11 @@ function verifyUser($token){
 	$stmt=$conn->prepare($sql);
 	$stmt->execute();
 	$user=$stmt->fetch(PDO::FETCH_ASSOC);
+	//we get the profile information of our user
+	// select a particular user by id
+	$stmt = $conn->prepare("SELECT * FROM profile_joueur WHERE id_user=:id");
+	$stmt->execute(['id' => $user['id']]); 
+	$user_profile = $stmt->fetch();
 	//if we get the result then we verify the user
 	if ($stmt->rowCount()>0){
 		//now we update the verified status of our user if the token corresponds to one user
@@ -152,7 +158,11 @@ function verifyUser($token){
 			$_SESSION['id']=$user['id'];
 			$_SESSION['username']=$user['username'];
 			$_SESSION['email']=$user['email'];
-			$_SESSION['veridied']=1;
+			$_SESSION['nom']=$user_profile['nom'];
+			$_SESSION['prenom']=$user_profile['prenom'];
+			$_SESSION['age']=$user_profile['age'];
+			$_SESSION['naissance']=$user_profile['naissance'];
+			$_SESSION['addresse']=$user_profile['addresse'];
 			header('location:http://localhost:8888/airball/profile_pages/profile_joueur/profile_joueur.php');
 			exit(0);
 		}
@@ -166,6 +176,11 @@ function verifyUserGestio($token){
 	$stmt=$conn->prepare($sql);
 	$stmt->execute();
 	$user=$stmt->fetch(PDO::FETCH_ASSOC);
+	//we get the profile information of our user
+	// select a particular user by id
+	$stmt = $conn->prepare("SELECT * FROM profile_joueur WHERE id_user=:id");
+	$stmt->execute(['id' => $user['id']]); 
+	$user_profile = $stmt->fetch();
 	//if we get the result then we verify the user
 	if ($stmt->rowCount()>0){
 		//now we update the verified status of our user if the token corresponds to one user
@@ -176,7 +191,11 @@ function verifyUserGestio($token){
 			$_SESSION['id']=$user['id'];
 			$_SESSION['username']=$user['username'];
 			$_SESSION['email']=$user['email'];
-			$_SESSION['veridied']=2;
+			$_SESSION['nom']=$user_profile['nom'];
+			$_SESSION['prenom']=$user_profile['prenom'];
+			$_SESSION['age']=$user_profile['age'];
+			$_SESSION['naissance']=$user_profile['naissance'];
+			$_SESSION['addresse']=$user_profile['addresse'];
 			header('location:http://localhost:8888/airball/profile_pages/profile_gestio/profile_gestio.php');
 			exit(0);
 		}
@@ -269,8 +288,8 @@ if (isset($_POST["sign_up_btn_club"])) {
 		$errors_club['email']="Adresse mail non valide";
 	}
 	//we check if the mail used to create has not been used already
-	$stmt = $conn->prepare("SELECT * FROM users WHERE email=?");
-	$stmt->execute([$club_email]); 
+	$stmt = $conn->prepare("SELECT * FROM users WHERE email=:email");
+	$stmt->execute(['email' => $_SESSION['email']]); 
 	$user = $stmt->fetch();
 	if ($user) {
 		$errors_club['email']="Email existe déjà";
@@ -307,12 +326,13 @@ if (isset($_POST["sign_up_btn_club"])) {
 //-------------------------------------------------------------------------------------------------------------------//
 //-------------------------------------------------------------------------------------------------------------------//
 
-$errors_club=array();
+$errors_edit=array();
 $nom="";
 $prenom="";
 $age="";
 $naissance="";
 $addresse="";
+$taille="";
 //in this part of the code we will retrieve the values entered by the user when he is entering his information
 if (isset($_POST['valider_edit_btn'])) {
 	//if the user presses the button,then we take the information
@@ -321,11 +341,12 @@ if (isset($_POST['valider_edit_btn'])) {
 	$age=$_POST['edit_age'];
 	$naissance=$_POST['edit_naissance'];
 	$addresse=$_POST['edit_addresse'];
+	$taille=$_POST['edit_taille'];
 	$id_user=$_SESSION['id'];
-	if(empty($nom) OR empty($prenom) OR empty($addresse) OR empty($age) OR empty($naissance)){
-		$errors_club['vide']="Veuillez renseigner tous les champs";
+	if(empty($nom) OR empty($prenom) OR empty($addresse) OR empty($age) OR empty($naissance) OR empty($taille)){
+		$errors_edit['vide']="Veuillez renseigner tous les champs";
 	}
-	if (count($errors_club)==0) {
+	if (count($errors_edit)==0) {
 		//we dont want our users to have multiple profile informations for our user,only one row
 		//so before adding a new row with the information that he entered, we are going to delete the last one
 		$sql = "DELETE FROM profile_joueur WHERE id_user = :id_user";
@@ -334,9 +355,9 @@ if (isset($_POST['valider_edit_btn'])) {
         $stmt->execute();
 		//that means that the user has entered all of his values
 		//we are going to save them in the profile table of our database user-verfication
-		$sql = "INSERT INTO profile_joueur(nom,prenom,age,naissance,addresse,id_user) VALUES (?,?,?,?,?,?)";
+		$sql = "INSERT INTO profile_joueur(nom,prenom,age,naissance,addresse,id_user,taille) VALUES (?,?,?,?,?,?,?)";
 		$stmt= $conn->prepare($sql);
-		$stmt->execute([$nom,$prenom,$age,$naissance,$addresse,$id_user]);
+		$stmt->execute([$nom,$prenom,$age,$naissance,$addresse,$id_user,$taille]);
 		//also if the user updates his profile threw the form, we are going to update the session with the values that he has entered
 		//so that he can visualize the new result
 		//we get the profile information of our user
@@ -349,11 +370,170 @@ if (isset($_POST['valider_edit_btn'])) {
 		$_SESSION['age']=$user_profile['age'];
 		$_SESSION['naissance']=$user_profile['naissance'];
 		$_SESSION['addresse']=$user_profile['addresse'];
+		$_SESSION['taille']=$user_profile['taille'];
 	}
 }
+
+
+//in this part we are going to take the user's test results and we are going to store them in a table
+$errors_test=array();
+$result="";
+$date="";
+if (isset($_POST['valider_test_result_cardiaque'])) {
+	//if the user presses the button,then we take the information
+	$result=$_POST['test_result'];
+	$date=$_POST['test_date'];
+	//we send an error message if the value entered is not right
+	if (empty($result)) {
+		$errors_test['vide']="Veuillez renseigner tous les champs";
+	}
+	if (count($errors_test)==0) {
+		//if the user wrote a right result we are going to add it to our table
+		$sql = "INSERT INTO tests (test_name,test_result,id_user,test_date) VALUES (?,?,?,?)";
+		$stmt= $conn->prepare($sql);
+		$stmt->execute(["frequence_cardiaque",$result,$_SESSION['id'],$date]);
+	}
+}
+
+//in this part we are going to take the user's test results and we are going to store them in a table
+if (isset($_POST['valider_test_result_reconnaissance'])) {
+	//if the user presses the button,then we take the information
+	$result=$_POST['test_result'];
+	$date=$_POST['test_date'];
+	//we send an error message if the value entered is not right
+	if (empty($result)) {
+		$errors_test['vide']="Veuillez renseigner tous les champs";
+	}
+	if (count($errors_test)==0) {
+		//if the user wrote a right result we are going to add it to our table
+		$sql = "INSERT INTO tests (test_name,test_result,id_user,test_date) VALUES (?,?,?,?)";
+		$stmt= $conn->prepare($sql);
+		$stmt->execute(["reconnaissance",$result,$_SESSION['id'],$date]);
+	}
+}
+
+//in this part we are going to take the user's test results and we are going to store them in a table
+if (isset($_POST['valider_test_result_reflexe'])) {
+	//if the user presses the button,then we take the information
+	$result=$_POST['test_result'];
+	$date=$_POST['test_date'];
+	//we send an error message if the value entered is not right
+	if (empty($result)) {
+		$errors_test['vide']="Veuillez renseigner tous les champs";
+	}
+	if (count($errors_test)==0) {
+		//if the user wrote a right result we are going to add it to our table
+		$sql = "INSERT INTO tests (test_name,test_result,id_user,test_date) VALUES (?,?,?,?)";
+		$stmt= $conn->prepare($sql);
+		$stmt->execute(["reflexe",$result,$_SESSION['id'],$date]);
+	}
+}
+
+//in this part we are going to take the user's test results and we are going to store them in a table
+if (isset($_POST['valider_test_result_temperature'])) {
+	//if the user presses the button,then we take the information
+	$result=$_POST['test_result'];
+	$date=$_POST['test_date'];
+	//we send an error message if the value entered is not right
+	if (empty($result)) {
+		$errors_test['vide']="Veuillez renseigner tous les champs";
+	}
+	if (count($errors_test)==0) {
+		//if the user wrote a right result we are going to add it to our table
+		$sql = "INSERT INTO tests (test_name,test_result,id_user,test_date) VALUES (?,?,?,?)";
+		$stmt= $conn->prepare($sql);
+		$stmt->execute(["temperature",$result,$_SESSION['id'],$date]);
+	}
+}
+
+
+//these values correspond to the arrrays that we will display for our tests
+$resultats_cardiaque="";
+$test_dates_cardiaque="";
+$resultats_reconnaissance="";
+$test_dates_reconnaissance="";
+$resultats_reflexe="";
+$test_dates_reflexe="";
+$resultats_temperature="";
+$test_dates_temperature="";
+
+
+//we want to show the results of the user in his profile page using chart js
+//we take the row of the user's test result
+$stmt = $conn->prepare("SELECT * FROM tests WHERE id_user=:id");
+$stmt->execute(['id' => $_SESSION['id']]); 
+//we need to take the information from all of the rows that have test results
+while ($row = $stmt->fetch()) {
+	if ($row['test_name']=="frequence_cardiaque") {
+		$resultat= $row['test_result'];
+		$test_date= $row['test_date'];
+		//now I add the values to the arrays I have created
+		$resultats_cardiaque= $resultats_cardiaque.$resultat.',';
+		$test_dates_cardiaque= $test_dates_cardiaque.'"'.$test_date.'",';
+	}
+	elseif ($row['test_name']=="reconnaissance") {
+		$resultat= $row['test_result'];
+		$test_date= $row['test_date'];
+		//now I add the values to the arrays I have created
+		$resultats_reconnaissance= $resultats_reconnaissance.$resultat.',';
+		$test_dates_reconnaissance= $test_dates_reconnaissance.'"'.$test_date.'",';
+	}
+	elseif ($row['test_name']=="reflexe") {
+		$resultat= $row['test_result'];
+		$test_date= $row['test_date'];
+		//now I add the values to the arrays I have created
+		$resultats_reflexe= $resultats_reflexe.$resultat.',';
+		$test_dates_reflexe= $test_dates_reflexe.'"'.$test_date.'",';
+	}
+	elseif ($row['test_name']=="temperature") {
+		$resultat= $row['test_result'];
+		$test_date= $row['test_date'];
+		//now I add the values to the arrays I have created
+		$resultats_temperature= $resultats_temperature.$resultat.',';
+		$test_dates_temperature= $test_dates_temperature.'"'.$test_date.'",';
+	}
+}
+//now we will putt these informations in a form that can be used in our graph
+//with trim we remove the last comma of the lists we have created
+$resultats_cardiaque=trim($resultats_cardiaque,",");
+$test_dates_cardiaque=trim($test_dates_cardiaque,",");
+$resultats_reconnaissance=trim($resultats_reconnaissance,",");
+$test_dates_reconnaissance=trim($test_dates_reconnaissance,",");
+$resultats_reflexe=trim($resultats_reflexe,",");
+$test_dates_reflexe=trim($test_dates_reflexe,",");
+$resultats_temperature=trim($resultats_temperature,",");
+$test_dates_temperature=trim($test_dates_temperature,",");
+
+
+
+//in this part of the code we are going to see how many times the user has done a certain test
+$nombre_tests_cardiaque=0;
+$nombre_tests_reflexe=0;
+$nombre_tests_reconnaissance=0;
+$nombre_tests_temperature=0;
+$stmt = $conn->prepare("SELECT * FROM tests WHERE id_user=:id");
+$stmt->execute(['id' => $_SESSION['id']]); 
+//we need to take the information from all of the rows that have test results
+while ($row = $stmt->fetch()) {
+	if ($row['test_name']=="frequence_cardiaque") {
+		$nombre_tests_cardiaque+=1;
+	}
+	elseif ($row['test_name']=="reflexe") {
+		$nombre_tests_reflexe+=1;
+	}
+	elseif ($row['test_name']=="reconnaissance") {
+		$nombre_tests_reconnaissance+=1;
+	}
+	elseif ($row['test_name']=="temperature") {
+		$nombre_tests_temperature+=1;
+	}
+}
+
+
+
+
 //in this part we destroy the session if the user logs out
 if (isset($_POST['logout'])) {
 	session_destroy();
 	header('location:http://localhost:8888/airball/basic_pages/index_airball.php');
 }
-

@@ -19,9 +19,6 @@
     </div>
     <div class="container">
         <div class="panel_joueur">
-            <div class="image_joueur">
-                <img src="../../style_connect/styles/img/airball.png" alt="Airball" width="160" height="60">
-            </div>
             <div class=info_joueur_left>
                 <label for="prenom">Nom:</label>
                 <h1><?php echo $_SESSION['nom']?></h1>
@@ -33,6 +30,8 @@
                 <h1><?php echo $_SESSION['naissance']?></h1>
                 <label for="addresse">Addresse:</label>
                 <h1><?php echo $_SESSION['addresse']?></h1>
+                <label for="taille">Taille:</label>
+                <h1><?php echo $_SESSION['taille']?> cm</h1>
             </div>
         </div>
         <div class="info_joueur">
@@ -42,21 +41,21 @@
                 <div class="test1">
                     <div class="cardiaque">
                         <h1>Fréquence cardiaque:</h1>
-                        <a href="#"><i class="material-icons" style="font-size:150px;color:black;">favorite</i></a>
+                        <a href="http://localhost:8888/airball/profile_pages/profile_joueur/tests/cardiaque.php"><i class="material-icons" style="font-size:150px;color:black;">favorite</i></a>
                     </div>
                     <div class="reflexe">
                         <h1>Réflexe sonore:</h1>
-                        <a href="#"><i class="material-icons" style="font-size:150px;;color:black;">touch_app</i></a>
+                        <a href="http://localhost:8888/airball/profile_pages/profile_joueur/tests/reflexe.php"><i class="material-icons" style="font-size:150px;;color:black;">touch_app</i></a>
                     </div>
                 </div>
                 <div class="test2">
                     <div class="temperature">
                         <h1>Température:</h1>
-                        <a href="#"><i class="material-icons" style="font-size:150px;;color:black;">thermostat</i></a>
+                        <a href="http://localhost:8888/airball/profile_pages/profile_joueur/tests/temperature.php"><i class="material-icons" style="font-size:150px;;color:black;">thermostat</i></a>
                     </div>
                     <div class="reconnaissance">
                         <h1>Reconnaissance sonore:</h1>
-                        <a href="#"><i class="material-icons" style="font-size:150px;;color:black;">record_voice_over</i></a>
+                        <a href="http://localhost:8888/airball/profile_pages/profile_joueur/tests/reconnaissance.php"><i class="material-icons" style="font-size:150px;;color:black;">record_voice_over</i></a>
                     </div>
                 </div>
             </div>

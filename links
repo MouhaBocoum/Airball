@@ -25,6 +25,14 @@ profile_joueur:
 http://localhost:8888/airball/profile_pages/profile_joueur/profile_joueur.php
 edit_profile:
 http://localhost:8888/airball/profile_pages/profile_joueur/edit_profile.php
+cardiaque:
+http://localhost:8888/airball/profile_pages/profile_joueur/tests/cardiaque.php
+reconnaissance:
+http://localhost:8888/airball/profile_pages/profile_joueur/tests/reconnaissance.php
+reflexe:
+http://localhost:8888/airball/profile_pages/profile_joueur/tests/reflexe.php
+temperature:
+http://localhost:8888/airball/profile_pages/profile_joueur/tests/temperature.php
 
 profile_not_verified:
 http://localhost:8888/airball/profile_pages/profile_not_verified.php

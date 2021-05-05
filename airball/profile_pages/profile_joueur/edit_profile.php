@@ -27,9 +27,10 @@ session_start();
            <input type="text" placeholder="Âge" name="edit_age">
            <input type="text" placeholder="Date de naissance" name="edit_naissance">
            <input type="text" placeholder="Addresse" name="edit_addresse">
-           <button type="submit" name="valider_edit_btn" name="validate_profile">Valider profil</button> 
-           <?php if (count($errors_club)>0):?>
-                <?php foreach($errors_club as $error): ?>
+           <input type="number" placeholder="Taille en cm" name="edit_taille">
+           <button type="submit" name="valider_edit_btn">Valider profil</button> 
+           <?php if (count($errors_edit)>0):?>
+                <?php foreach($errors_edit as $error): ?>
                 <li class="alert"><?php echo $error; ?></li>
                 <?php endforeach;?>
             <?php endif ;?>    
