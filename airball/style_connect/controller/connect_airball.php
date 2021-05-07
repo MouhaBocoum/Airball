@@ -143,13 +143,14 @@ function verifyUser($token){
 	$stmt=$conn->prepare($sql);
 	$stmt->execute();
 	$user=$stmt->fetch(PDO::FETCH_ASSOC);
+	$exist=$stmt->rowCount();
 	//we get the profile information of our user
-	// select a particular user by id
+	//select a particular user by id
 	$stmt = $conn->prepare("SELECT * FROM profile_joueur WHERE id_user=:id");
 	$stmt->execute(['id' => $user['id']]); 
 	$user_profile = $stmt->fetch();
 	//if we get the result then we verify the user
-	if ($stmt->rowCount()>0){
+	if ($exist>0){
 		//now we update the verified status of our user if the token corresponds to one user
 		$update_query="UPDATE users SET verified=1 WHERE token='$token'";
 		$stmt= $conn->prepare($update_query);
@@ -176,13 +177,14 @@ function verifyUserGestio($token){
 	$stmt=$conn->prepare($sql);
 	$stmt->execute();
 	$user=$stmt->fetch(PDO::FETCH_ASSOC);
+	$exist=$stmt->rowCount();
 	//we get the profile information of our user
 	// select a particular user by id
 	$stmt = $conn->prepare("SELECT * FROM profile_joueur WHERE id_user=:id");
 	$stmt->execute(['id' => $user['id']]); 
 	$user_profile = $stmt->fetch();
 	//if we get the result then we verify the user
-	if ($stmt->rowCount()>0){
+	if ($exist>0){
 		//now we update the verified status of our user if the token corresponds to one user
 		$update_query="UPDATE users SET verified=2 WHERE token='$token'";
 		$stmt= $conn->prepare($update_query);
