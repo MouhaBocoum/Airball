@@ -52,6 +52,7 @@ if (isset($_POST["sign_up_btn"])) {
 		$sql = "INSERT INTO users (username, email, user_password, verified, token) VALUES (?,?,?,?,?)";
 		$stmt= $conn->prepare($sql);
 		$stmt->execute([$new_user_name,$new_user_email,$new_user_password,$verified,$token]);
+		$_SESSION['email']=$new_user_email;
 		if ($stmt->rowCount() >= 1) {
 		//We log the new user into his profile page
 		$user_id=$conn->insert_id;
@@ -107,6 +108,7 @@ if (isset($_POST["sign_in_btn"])) {
 			$_SESSION['age']=$user_profile['age'];
 			$_SESSION['naissance']=$user_profile['naissance'];
 			$_SESSION['addresse']=$user_profile['addresse'];
+			$_SESSION['club']=$user['club'];
 			header('location:http://localhost:8888/airball/profile_pages/profile_joueur/profile_joueur.php');
 			exit();
 		}
@@ -121,7 +123,8 @@ if (isset($_POST["sign_in_btn"])) {
 			$_SESSION['age']=$user_profile['age'];
 			$_SESSION['naissance']=$user_profile['naissance'];
 			$_SESSION['addresse']=$user_profile['addresse'];
-			header('location:http://localhost:8888/airball/profile_pages/profile_joueur/profile_joueur.php');
+			$_SESSION['club']=$user['club'];
+			header('location:http://localhost:8888/airball/profile_pages/profile_gestio/profile_gestio.php');
 			exit();
 		}
 		elseif(!password_verify($user_password,$user['user_password'])){
@@ -290,8 +293,8 @@ if (isset($_POST["sign_up_btn_club"])) {
 		$errors_club['email']="Adresse mail non valide";
 	}
 	//we check if the mail used to create has not been used already
-	$stmt = $conn->prepare("SELECT * FROM users WHERE email=:email");
-	$stmt->execute(['email' => $_SESSION['email']]); 
+	$stmt = $conn->prepare("SELECT * FROM users WHERE email=?");
+	$stmt->execute([$new_user_email]); 
 	$user = $stmt->fetch();
 	if ($user) {
 		$errors_club['email']="Email existe déjà";
@@ -305,9 +308,10 @@ if (isset($_POST["sign_up_btn_club"])) {
 		$token=bin2hex(random_bytes(50));
 		$verified=0;
 		//now we insert the users info in our database
-		$sql = "INSERT INTO users (username, email, user_password, verified, token) VALUES (?,?,?,?,?)";
+		$sql = "INSERT INTO users (username, email, user_password, verified, token,club) VALUES (?,?,?,?,?,?)";
 		$stmt= $conn->prepare($sql);
-		$stmt->execute([$club_name,$club_email,$club_password,$verified,$token]);
+		$stmt->execute([$club_name,$club_email,$club_password,$verified,$token,$club_name]);
+		$_SESSION['email']=$club_email;
 		if ($stmt->rowCount() >= 1) {
 		//We log the new user into his profile page
 		$user_id=$conn->insert_id;
@@ -335,17 +339,18 @@ $age="";
 $naissance="";
 $addresse="";
 $taille="";
+$club="";
 //in this part of the code we will retrieve the values entered by the user when he is entering his information
 if (isset($_POST['valider_edit_btn'])) {
 	//if the user presses the button,then we take the information
 	$nom=$_POST['edit_nom'];
 	$prenom=$_POST['edit_prenom'];
 	$age=$_POST['edit_age'];
-	$naissance=$_POST['edit_naissance'];
+	$club=$_POST['edit_club'];
 	$addresse=$_POST['edit_addresse'];
 	$taille=$_POST['edit_taille'];
 	$id_user=$_SESSION['id'];
-	if(empty($nom) OR empty($prenom) OR empty($addresse) OR empty($age) OR empty($naissance) OR empty($taille)){
+	if(empty($nom) OR empty($prenom) OR empty($addresse) OR empty($age) OR empty($club) OR empty($taille)){
 		$errors_edit['vide']="Veuillez renseigner tous les champs";
 	}
 	if (count($errors_edit)==0) {
@@ -357,20 +362,24 @@ if (isset($_POST['valider_edit_btn'])) {
         $stmt->execute();
 		//that means that the user has entered all of his values
 		//we are going to save them in the profile table of our database user-verfication
-		$sql = "INSERT INTO profile_joueur(nom,prenom,age,naissance,addresse,id_user,taille) VALUES (?,?,?,?,?,?,?)";
+		$sql = "INSERT INTO profile_joueur(nom,prenom,age,club,addresse,id_user,taille) VALUES (?,?,?,?,?,?,?)";
 		$stmt= $conn->prepare($sql);
-		$stmt->execute([$nom,$prenom,$age,$naissance,$addresse,$id_user,$taille]);
+		$stmt->execute([$nom,$prenom,$age,$club,$addresse,$id_user,$taille]);
 		//also if the user updates his profile threw the form, we are going to update the session with the values that he has entered
 		//so that he can visualize the new result
 		//we get the profile information of our user
 		// select a particular user by id
+		//we are also going to put the name of the club the user has entered in his users profile
+		$sql = "INSERT INTO users (club) VALUES (?)";
+		$stmt= $conn->prepare($sql);
+		$stmt->execute([$club]);
 		$stmt = $conn->prepare("SELECT * FROM profile_joueur WHERE id_user=:id");
 		$stmt->execute(['id' => $_SESSION['id']]); 
 		$user_profile = $stmt->fetch();
 		$_SESSION['nom']=$user_profile['nom'];
 		$_SESSION['prenom']=$user_profile['prenom'];
 		$_SESSION['age']=$user_profile['age'];
-		$_SESSION['naissance']=$user_profile['naissance'];
+		$_SESSION['club']=$user_profile['club'];
 		$_SESSION['addresse']=$user_profile['addresse'];
 		$_SESSION['taille']=$user_profile['taille'];
 	}

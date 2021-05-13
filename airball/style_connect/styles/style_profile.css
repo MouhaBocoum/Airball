@@ -13,6 +13,9 @@ body{
     line-height: 1.3;
     font-size: 1.125rem;
 }
+.container_gestio{
+    height: 75vh;
+}
 
 .log_in{
     border: 5px solid black;
@@ -84,6 +87,18 @@ body{
     font-size: 15px;
     padding: 18px;
 }
+.footer_gestio{
+    background-color: hsl(233, 8%, 62%);
+    text-align: center;
+    padding: 10px 0;
+    color: white;
+    font-size: 15px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
 .hello {
     margin: 0 300px;
 }

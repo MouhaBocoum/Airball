@@ -20,12 +20,12 @@ session_start();
         </div>
     </div>
     <div class="club">
-        <form action="edit_profile.php" method="post">
+        <form action="edit_profile_joueur.php" method="post">
            <h1>Éditer mon profil</h1>
            <input type="text" placeholder="Nom" name="edit_nom">
            <input type="text" placeholder="Prénom" name="edit_prenom">
            <input type="text" placeholder="Âge" name="edit_age">
-           <input type="text" placeholder="Date de naissance" name="edit_naissance">
+           <input type="text" placeholder="Nom de votre club" name="edit_club">
            <input type="text" placeholder="Addresse" name="edit_addresse">
            <input type="number" placeholder="Taille en cm" name="edit_taille">
            <button type="submit" name="valider_edit_btn">Valider profil</button> 

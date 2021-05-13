@@ -13,7 +13,7 @@
     <div class="header">
         <a href="http://localhost:8888/airball/basic_pages/index_airball.php"><img src="../../style_connect/styles/img/airball.png" alt="Airball" width="160" height="60"></a>
         <div class="links">
-            <a href="http://localhost:8888/airball/profile_pages/profile_joueur/edit_profile.php">Éditer mon profil</a>
+            <a href="http://localhost:8888/airball/profile_pages/profile_joueur/edit_profile_joueur.php">Éditer mon profil</a>
             <a href="http://localhost:8888/airball/basic_pages/index_airball.php" name="logout">Me déconnecter</a>
         </div>
     </div>
@@ -26,8 +26,8 @@
                 <h1><?php echo $_SESSION['prenom']?></h1>
                 <label for="age">Âge:</label>
                 <h1><?php echo $_SESSION['age']?> ans</h1>
-                <label for="naissance">Date de naissance:</label>
-                <h1><?php echo $_SESSION['naissance']?></h1>
+                <label for="naissance">Nom de votre club:</label>
+                <h1><?php echo $_SESSION['club']?></h1>
                 <label for="addresse">Addresse:</label>
                 <h1><?php echo $_SESSION['addresse']?></h1>
                 <label for="taille">Taille:</label>
