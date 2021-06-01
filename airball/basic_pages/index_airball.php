@@ -55,6 +55,7 @@ if(isset($_GET['password-token'])){
                     <input type="email" placeholder="Email" name="new_user_email" value="<?php echo $new_user_email; ?>">
                     <input type="password" placeholder="Mot de passe" name="new_user_password">
                     <input type="password" placeholder="Confirmer mot de passe" name="new_user_password_confirm">
+                    <input type="text" placeholder="Club" name="new_user_club">
                     <button type="submit" name="sign_up_btn">S'inscrire</button>
                     <?php if (count($errors_sign_up)>0):?>
                         <?php foreach($errors_sign_up as $error):?>

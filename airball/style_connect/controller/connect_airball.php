@@ -19,14 +19,16 @@ $new_user_name="";
 $new_user_email="";
 $new_user_password="";
 $new_user_password_confirm="";
+$new_user_club="";
 //we define the variables for our sign up
 if (isset($_POST["sign_up_btn"])) {
 	$new_user_name=$_POST['new_user_name'];
 	$new_user_email=$_POST['new_user_email'];
 	$new_user_password=$_POST['new_user_password'];
 	$new_user_password_confirm=$_POST['new_user_password_confirm'];
+	$new_user_club=$_POST['new_user_club'];
 	//we manage the possible errors from the user
-	if(empty($new_user_name) OR empty($new_user_email) OR empty($new_user_password) OR empty($new_user_password_confirm)){
+	if(empty($new_user_name) OR empty($new_user_email) OR empty($new_user_password) OR empty($new_user_password_confirm) OR empty($new_user_club)){
 		$errors_sign_up['vide']="Veuillez renseigner tous les champs";
 	}
 	//we make sure that the email is good
@@ -52,7 +54,7 @@ if (isset($_POST["sign_up_btn"])) {
 		//now we insert the users info in our database
 		$sql = "INSERT INTO users (username, email, user_password, verified, token,club) VALUES (?,?,?,?,?,?)";
 		$stmt= $conn->prepare($sql);
-		$stmt->execute([$new_user_name,$new_user_email,$new_user_password,$verified,$token,'0']);
+		$stmt->execute([$new_user_name,$new_user_email,$new_user_password,$verified,$token,$new_user_club]);
 		$_SESSION['email']=$new_user_email;
 		if ($stmt->rowCount() >= 1) {
 		//We log the new user into his profile page
@@ -100,6 +102,7 @@ if (isset($_POST["sign_in_btn"])) {
 		//now we check if the password is valid
 		if (password_verify($user_password,$user['user_password']) AND $user['verified']==1) { 
 			//We log the new user into his profile page
+			$_SESSION['password']=
 			$_SESSION['id']=$user['id'];
 			$_SESSION['token']=$user['token'];
 			$_SESSION['username']=$user['username'];
@@ -355,18 +358,16 @@ $age="";
 $naissance="";
 $addresse="";
 $taille="";
-$club="";
 //in this part of the code we will retrieve the values entered by the user when he is entering his information
 if (isset($_POST['valider_edit_btn'])) {
 	//if the user presses the button,then we take the information
 	$nom=$_POST['edit_nom'];
 	$prenom=$_POST['edit_prenom'];
 	$age=$_POST['edit_age'];
-	$club=$_POST['edit_club'];
 	$addresse=$_POST['edit_addresse'];
 	$taille=$_POST['edit_taille'];
 	$id_user=$_SESSION['id'];
-	if(empty($nom) OR empty($prenom) OR empty($addresse) OR empty($age) OR empty($club) OR empty($taille)){
+	if(empty($nom) OR empty($prenom) OR empty($addresse) OR empty($age) OR empty($taille)){
 		$errors_edit['vide']="Veuillez renseigner tous les champs";
 	}
 	if (count($errors_edit)==0) {
@@ -378,24 +379,20 @@ if (isset($_POST['valider_edit_btn'])) {
         $stmt->execute();
 		//that means that the user has entered all of his values
 		//we are going to save them in the profile table of our database user-verfication
-		$sql = "INSERT INTO profile_joueur(nom,prenom,age,club,addresse,id_user,taille) VALUES (?,?,?,?,?,?,?)";
+		$sql = "INSERT INTO profile_joueur(nom,prenom,age,addresse,id_user,taille) VALUES (?,?,?,?,?,?)";
 		$stmt= $conn->prepare($sql);
-		$stmt->execute([$nom,$prenom,$age,$club,$addresse,$id_user,$taille]);
+		$stmt->execute([$nom,$prenom,$age,$addresse,$id_user,$taille]);
 		//also if the user updates his profile threw the form, we are going to update the session with the values that he has entered
 		//so that he can visualize the new result
 		//we get the profile information of our user
 		// select a particular user by id
-		//we are also going to put the name of the club the user has entered in his users profile
-		$sql = "INSERT INTO users (club) VALUES (?)";
-		$stmt= $conn->prepare($sql);
-		$stmt->execute([$club]);
 		$stmt = $conn->prepare("SELECT * FROM profile_joueur WHERE id_user=:id");
 		$stmt->execute(['id' => $_SESSION['id']]); 
 		$user_profile = $stmt->fetch();
 		$_SESSION['nom']=$user_profile['nom'];
 		$_SESSION['prenom']=$user_profile['prenom'];
 		$_SESSION['age']=$user_profile['age'];
-		$_SESSION['club']=$user_profile['club'];
+		$_SESSION['club']=$$_SESSION['club'];
 		$_SESSION['addresse']=$user_profile['addresse'];
 		$_SESSION['taille']=$user_profile['taille'];
 	}
