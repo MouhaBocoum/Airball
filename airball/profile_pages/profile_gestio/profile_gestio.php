@@ -6,21 +6,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://localhost:8888/airball/style_connect/styles/style_profile.css">
+    <link rel="stylesheet" href="http://localhost:8888/airball/style_connect/styles/style_gest_admin.css">
     <title>Document</title>
 </head>
 
 <body>
-    <div>
+    <div class="header">
+        <h1><a href="http://localhost:8888/airball/basic_pages/index_airball.php"><img src="http://localhost:8888/airball/style_connect/styles/img/airball.png" width="115" height="110" alt="Infinite Measures"></a></h1>
+        <div class="links">
+            <a href="http://localhost:8888/airball/basic_pages/index_airball.php" name="logout">Me déconnecter</a>
+        </div>
+    </div>
+    <div class="container">
         <!--THIS PART OF THE CODE CORRESPONDS TO THE PROFILE OF A VERIFIED USER-->
-        <h1>Bonjour,<?php echo $_SESSION['club'] ?></h1>
-        <h2>Merci d'avoir crée un compte chez Airball</h2>
-        <h3>Votre compte a été vérifié</h3>
-        <a href="http://localhost:8888/airball/basic_pages/index_airball.php">Déconnexion</a>
-
+        <h1 class="title">Bonjour,<?php echo $_SESSION['club'] ?></h1>
         <html class="listusers">
-        <h1>liste joueurs</h1>
-
+        <h1 class="title">Voici la liste joueurs de vos joueurs</h1>
         <form action="" method="post">
             <div class="tbl-header">
                 <table cellpadding="0" cellspacing="0" border="0">
@@ -31,7 +32,7 @@
                             <th class="col">nom <br> <input type="text" class="searchbars" name="nomsearch" value=<?php if (isset($_POST["nomsearch"]))    echo $_POST["nomsearch"];    ?>></th>
                             <th class="col">identifiant <br> <input type="text" class="searchbars" name="idusearch" value=<?php if (isset($_POST["idusearch"]))    echo $_POST["idusearch"];    ?>></th>
 
-                            <th> <input type="submit" style="height : 47px;" value='rechercher' class="searchbutton"></th>
+                            <th> <input type="submit" style="height : 20px;" value='rechercher' class="searchbutton"></th>
                         </tr>
                     </thead>
                 </table>
@@ -105,13 +106,13 @@
                     $field3 = ucfirst($row['nom']);
                     $field4 = $row["username"];
                     $field5 = $row["age"];
-                    $field6 = $row["naissance"];
                     $field7 = $row["addresse"];
                     $field8 = $row["taille"];
                     $field9 = $row["email"];
 
 
                     echo '<tr>
+ 
 										<td data-label="identifiant">' . $field1 . '</td>
 										<td data-label="Prenom">' . $field2 . '</td>
 										<td data-label="Nom">' . $field3 . '</td>
@@ -137,8 +138,6 @@
 
             ?>
         </div>
-
-        <button class="searchbutton" style="background: #4CAF50;" onclick="window.location.href='welcome.php?page=newuserform';" type="submit"> ajout d'utilisateur </button>
 
         <div class="modifyajax" id="modifyajax"></div>
 

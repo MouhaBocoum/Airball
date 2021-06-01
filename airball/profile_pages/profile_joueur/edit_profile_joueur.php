@@ -13,7 +13,7 @@ session_start();
 </head>
 <body>
     <div class="header">
-        <img src="../../style_connect/styles/img/airball.png" alt="Airball" width="160" height="60">
+        <h1><a href="http://localhost:8888/airball/basic_pages/index_airball.php"><img src="http://localhost:8888/airball/style_connect/styles/img/airball.png" width="115" height="110" alt="Infinite Measures"></a></h1>
         <div class="links">
             <a href="http://localhost:8888/airball/profile_pages/profile_joueur/profile_joueur.php">Page profil</a>
             <a href="http://localhost:8888/airball/basic_pages/index_airball.php" name="logout">Me déconnecter</a>

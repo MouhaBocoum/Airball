@@ -11,12 +11,12 @@
 </head>
 <body>
     <div class="nav_pc">
-        <h1><a href="http://localhost:8888/airball/basic_pages/index_airball.php"><img src="../style_connect/styles/img/airball.png" width="160" height="60" alt="Infinite Measures"></a></h1>
+        <h1><a href="http://localhost:8888/airball/basic_pages/index_airball.php"><img src="http://localhost:8888/airball/style_connect/styles/img/airball.png" width="115" height="110" alt="Infinite Measures"></a></h1>
         <ul class="nav_bar_pc">
             <li><a href="http://localhost:8888/airball/basic_pages/index_airball.php">Accueil</a>
                 <div></div>
             </li>
-            <li><a href="http://localhost:8888/airball/basic_pages/produit.php">Notre produit</a>
+            <li><a href="http://localhost:8888/airball/basic_pages/produit.php">Contact</a>
                 <div></div>
             </li>
             <li><a href="http://localhost:8888/airball/basic_pages/FAQ.php">FAQ</a>
@@ -33,42 +33,42 @@
             <div class="question_box">
                 <div class="question_box_item" id="question1">
                     <a href="#question1" class="question_box_link">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Quels types d’utilisateurs est-ce que ce site cible ?
                         <i class="icon ion-md-add"></i>
                         <i class="icon ion-md-remove"></i>
                     </a>
                     <div class="answer">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora quidem illum quam laboriosam in officiis deserunt itaque nostrum quas hic temporibus animi ea, dolorem sint. Adipisci minima quae ab qui.</p>
+                        <p>Notre site est destiné aux joueurs de basket et aux coachs. Nous ciblons tout aussi bien les petits clubs que les grands !</p>
                     </div>
                 </div>
                 <div class="question_box_item" id="question2">
                     <a href="#question2" class="question_box_link">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        J’ai malencontrueusement mal écrit mon pseudo lors de mon inscription, comment puis-je le modifier ?
                         <i class="icon ion-md-add"></i>
                         <i class="icon ion-md-remove"></i>
                     </a>
                     <div class="answer">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora quidem illum quam laboriosam in officiis deserunt itaque nostrum quas hic temporibus animi ea, dolorem sint. Adipisci minima quae ab qui.</p>
+                        <p>Il vous est possible de modifier votre pseudo depuis votre page personelle. Sinon vous pouvez demander à votre coach qui pourra le modifier à votre place depuis sa page gestionnaire.</p>
                     </div>
                 </div>
                 <div class="question_box_item" id="question3">
                     <a href="#question3" class="question_box_link">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Comment puis-je avoir accès à mes résultats ?
                         <i class="icon ion-md-add"></i>
                         <i class="icon ion-md-remove"></i>
                     </a>
                     <div class="answer">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora quidem illum quam laboriosam in officiis deserunt itaque nostrum quas hic temporibus animi ea, dolorem sint. Adipisci minima quae ab qui.</p>
+                        <p>Si vous êtes un joueur inscrivez-vous, vous pourrez ensuite consulter/modifier vos résultats depuis votre espace personnel.</p>
                     </div>
                 </div>
                 <div class="question_box_item" id="question4">
                     <a href="#question4" class="question_box_link">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Je rencontre un problème sur le site, j’aimerais le résoudre. 
                         <i class="icon ion-md-add"></i>
                         <i class="icon ion-md-remove"></i>
                     </a>
                     <div class="answer">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora quidem illum quam laboriosam in officiis deserunt itaque nostrum quas hic temporibus animi ea, dolorem sint. Adipisci minima quae ab qui.</p>
+                        <p>Vous pouvez nous le faire remonter en utilisant la page Contact.</p>
                     </div>
                 </div>
             </div>

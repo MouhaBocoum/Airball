@@ -16,13 +16,13 @@ body{
     padding: 10px;
 }
 .header{
-    background-color: hsl(233, 8%, 62%);
+    background-color: rgb(118, 157, 170);
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 .footer{
-    background-color: hsl(233, 8%, 62%);
+    background-color: rgb(118, 157, 170);
     text-align: center;
     color: white;
     font-size: 15px;
@@ -43,12 +43,12 @@ a, a:visited, a:hover{
 .resultats_test{
     border: 3px solid black;
     border-radius: 10px;
-    box-shadow: 10px 5px 5px hsl(233, 8%, 62%);
+    box-shadow: 10px 5px 5px rgb(118, 157, 170);
 }
 .repartition_test{
     border: 3px solid black;
     border-radius: 10px;
-    box-shadow: 10px 5px 5px hsl(233, 8%, 62%);
+    box-shadow: 10px 5px 5px rgb(118, 157, 170);
 }
 .down_panel{
     display: grid;
@@ -58,8 +58,8 @@ a, a:visited, a:hover{
 .input_value{
     border: 3px solid black;
     border-radius: 10px;
-    box-shadow: 10px 5px 5px hsl(233, 8%, 62%);
-    background-image: linear-gradient(hsl(233, 26%, 24%),transparent);
+    box-shadow: 10px 5px 5px rgb(118, 157, 170);
+    background-image: rgb(118, 157, 170);
 }
 h3{
     display: flex;
@@ -79,7 +79,7 @@ form{
 }
 .input_value button{
     cursor: pointer;
-    background:linear-gradient(to right,hsl(233, 26%, 24%), hsl(233, 8%, 62%));
+    background:rgb(118, 157, 170);
     border: 0;
     padding: 14px 35px;
     border-radius: 50px;

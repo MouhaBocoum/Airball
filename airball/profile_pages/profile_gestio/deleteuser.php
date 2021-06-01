@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 $sql = "DELETE FROM profile_joueur WHERE id_user='$idchange'";
 
 if ($conn->query($sql) === TRUE) {
-	$home = "../profile_admin/profile_admin.php";
+	$home = "../profile_gestio/profile_gestio.php";
 	header("location: " . $home);
 } else {
 	echo "Error updating record: " . $conn->error;

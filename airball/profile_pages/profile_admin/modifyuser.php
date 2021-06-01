@@ -4,7 +4,6 @@ $idchange 			= $_POST['idchange'];
 $nomchange 			= $_POST['nomchange'];
 $prenomchange 		= $_POST['prenomchange'];
 $agechange 			= $_POST['agechange'];
-$naisschange 	  	= $_POST['naisschange'];
 $addresschange 		= $_POST['addresschange'];
 
 $servername         = "localhost";
@@ -18,7 +17,7 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "UPDATE profile_joueur SET nom='$nomchange', prenom='$prenomchange', age='$agechange', naissance = '$naisschange', addresse ='$addresschange' WHERE id_user='$idchange'";
+$sql = "UPDATE profile_joueur SET nom='$nomchange', prenom='$prenomchange', age='$agechange', addresse ='$addresschange' WHERE id_user='$idchange'";
 
 if ($conn->query($sql) === TRUE) {
 	$home = "../profile_admin/profile_admin.php";

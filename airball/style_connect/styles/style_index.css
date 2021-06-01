@@ -24,13 +24,13 @@ body{
     position: absolute;
     opacity: 0;
     width: 100%;
-    background-image: linear-gradient(hsl(233, 26%, 24%),transparent);
+    background-image: rgb(118, 157, 170);
     transition: opacity 500ms ease-in-out;
 }
 .overlay.open{
     opacity: 1;
     width: 100%;
-    background-image: linear-gradient(hsl(233, 26%, 24%),transparent);
+    background-image: rgb(118, 157, 170);
     transition: opacity 500ms ease-in-out;
 }
 
@@ -53,7 +53,7 @@ ul.nav_bar_pc{
 }
 .nav_pc button{
     cursor: pointer;
-    background:linear-gradient(to right,hsl(233, 26%, 24%),transparent);
+    background:rgb(118, 157, 170);;
     border: 0;
     padding: 14px 35px;
     border-radius: 50px;
@@ -65,10 +65,9 @@ ul.nav_bar_pc{
 .nav_pc button:hover{
     opacity: 0.7;
     transition: opacity 500ms ease-in-out;
-    text-transform: uppercase;
 }
 .nav_bar_pc div{
-    background: linear-gradient(to right,hsl(233, 26%, 24%), hsl(233, 8%, 62%));
+    background: rgb(118, 157, 170);;
     position: relative;
     width: 100%;
     height: 4px;
@@ -87,7 +86,7 @@ ul.nav_bar_pc{
 
 
 .hero{
-    background-color:hsl(233, 8%, 62%);
+    background-color:rgb(118, 157, 170);
     padding: 200px ;
     display: flex;
     justify-content: center;
@@ -147,18 +146,16 @@ ul.nav_bar_pc{
 }
 .connection button{
     cursor: pointer;
-    background:linear-gradient(to right,hsl(233, 26%, 24%), hsl(233, 8%, 62%));
+    background:rgb(118, 157, 170);
     border: 0;
     padding: 14px 35px;
     border-radius: 50px;
     font-weight: 600;
     color: white;
-    text-transform: uppercase;
 }
 .connection button:hover{
     opacity: 0.7;
     transition: opacity 500ms ease-in-out;
-    text-transform: uppercase;
 }
 
 
@@ -192,7 +189,7 @@ ul.nav_bar_pc{
 
 }
 .panels{
-	background: linear-gradient(hsl(233, 26%, 24%), hsl(233, 8%, 62%));
+	background: rgb(137, 187, 204);
 	background-position: 0 0;
 	color: white;
 	position: relative;

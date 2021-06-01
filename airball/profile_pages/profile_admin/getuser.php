@@ -26,14 +26,12 @@ if ($action == 0) { // affichage de la modification
         $field4 = $row["nom"];
         $field5 = $row["prenom"];
         $field6 = $row["age"];
-        $field7 = $row["naissance"];
         $field8 = $row["addresse"];
 
         $table1 = '<tr><th>' . 'identifiant' . '	        	</th><td>' . $field1 . ' <input type= "hidden" name="idchange" value ="' . $field1 . '"> </td></tr>
                                         <tr><th>nom             </th><td><input class="textinputmod" type= "text" name="nomchange" 	        placeholder = "nom"	 value ="' . $field4 . '"></td></tr>
                                         <tr><th>prenom          </th><td><input class="textinputmod" type= "text" name="prenomchange" 	    placeholder = "prenom" 			 value ="' . $field5 . '"></td></tr>
 										<tr><th>age 	        </th><td><input class="textinputmod" type= "text" name="agechange" 		placeholder = "age" 		 value ="' . $field6 . '"></td></tr>
-                                        <tr><th>naissance 	    </th><td><input class="textinputmod" type= "text" name="naisschange" 		placeholder = "naissance" 		 value ="' . $field7 . '"></td></tr>
                                         <tr><th>addresse 	    </th><td><input class="textinputmod" type= "text" name="addresschange" 		placeholder = "addresse" 		 value ="' . $field8 . '"></td></tr>
                                         <tr><td> <input style = "background: red" type = "button" value="annuler" class = "homebutton" onclick = "cancelmodify()">	</td><td><input type= "submit" value ="modifier" class = "homebutton"></td></tr>';
         ';';

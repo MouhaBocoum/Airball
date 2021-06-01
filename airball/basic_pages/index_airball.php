@@ -29,12 +29,12 @@ if(isset($_GET['password-token'])){
 </head>
 <body>
     <div class="nav_pc">
-        <h1><a href="http://localhost:8888/airball/basic_pages/index_airball.php"><img src="../style_connect/styles/img/airball.png" width="160" height="60" alt="Infinite Measures"></a></h1>
+        <h1><a href="http://localhost:8888/airball/basic_pages/index_airball.php"><img src="http://localhost:8888/airball/style_connect/styles/img/airball.png" width="115" height="110" alt="Infinite Measures"></a></h1>
         <ul class="nav_bar_pc">
             <li><a href="http://localhost:8888/airball/basic_pages/index_airball.php">Accueil</a>
                 <div></div>
             </li>
-            <li><a href="http://localhost:8888/airball/basic_pages/produit.php">Notre produit</a>
+            <li><a href="http://localhost:8888/airball/basic_pages/produit.php">Contact</a>
                 <div></div>
             </li>
             <li><a href="http://localhost:8888/airball/basic_pages/FAQ.php">FAQ</a>

@@ -18,10 +18,10 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "UPDATE profile_joueur SET nom='$nomchange', prenom='$prenomchange', age='$agechange', naissance = '$naisschange', addresse ='$addresschange' WHERE id_user='$idchange'";
+$sql = "UPDATE profile_joueur SET nom='$nomchange', prenom='$prenomchange', age='$agechange', addresse ='$addresschange' WHERE id_user='$idchange'";
 
 if ($conn->query($sql) === TRUE) {
-	$home = "../profile_admin/profile_admin.php";
+	$home = "../profile_gestio/profile_gestio.php";
 	header("location: " . $home);
 } else {
 	echo "Error updating record: " . $conn->error;

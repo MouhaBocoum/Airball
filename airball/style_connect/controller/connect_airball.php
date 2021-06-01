@@ -553,6 +553,23 @@ while ($row = $stmt->fetch()) {
 	}
 }
 
+//this part corresponds to the contact support
+$errors_contact=array();
+$contact_nom="";
+$contact_prenom="";
+$contact_message="";
+if(isset($_POST['valider_support_btn'])){
+	$contact_nom=$_POST['contact_nom'];
+	$contact_prenom=$_POST['contact_prenom'];
+	$contact_message=$_POST['contact_sujet'];
+	if(empty($contact_message) OR empty($contact_nom) OR empty($contact_prenom)){
+		$errors_contact['vide']="Veuillez renseigner tous les champs";
+	}
+	if(count($errors_contact)==0){
+		contact($contact_message);
+	}
+}
+
 //in this part we destroy the session if the user logs out
 if (isset($_POST['logout'])) {
 	session_destroy();

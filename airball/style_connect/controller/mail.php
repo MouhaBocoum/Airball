@@ -98,4 +98,18 @@ function sendVerificationEmailGestio($new_user_email,$token){
     // Send the message
     $result = $mailer->send($message);
 }
+
+//this mail will be sent as support from the user if he has any questions
+function contact($body){
+    //we call the mailer object inside our function so that we can use it in our function
+    global $mailer;
+    // Create a message
+    $message = (new Swift_Message('Contact support'))
+    ->setFrom(['AirballAthletics@gmail.com'])
+    ->setTo('bocoumouha@gmail.com')
+    ->setBody($body,'text/html');
+    // Send the message
+    $result = $mailer->send($message);
+}
+
 ?>
