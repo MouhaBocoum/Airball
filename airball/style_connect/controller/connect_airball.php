@@ -1,8 +1,9 @@
 <?php
 
-require_once 'mail.php';
+
 session_start();
 
+require_once 'mail.php';
 //we connect to the database precisely to the table user verfication
 try {
     $conn = new PDO('mysql:host=localhost;dbname=user-verification', 'root', 'root');
@@ -49,9 +50,9 @@ if (isset($_POST["sign_up_btn"])) {
 		$token=bin2hex(random_bytes(50));
 		$verified=0;
 		//now we insert the users info in our database
-		$sql = "INSERT INTO users (username, email, user_password, verified, token) VALUES (?,?,?,?,?)";
+		$sql = "INSERT INTO users (username, email, user_password, verified, token,club) VALUES (?,?,?,?,?,?)";
 		$stmt= $conn->prepare($sql);
-		$stmt->execute([$new_user_name,$new_user_email,$new_user_password,$verified,$token]);
+		$stmt->execute([$new_user_name,$new_user_email,$new_user_password,$verified,$token,'0']);
 		$_SESSION['email']=$new_user_email;
 		if ($stmt->rowCount() >= 1) {
 		//We log the new user into his profile page
@@ -125,6 +126,21 @@ if (isset($_POST["sign_in_btn"])) {
 			$_SESSION['addresse']=$user_profile['addresse'];
 			$_SESSION['club']=$user['club'];
 			header('location:http://localhost:8888/airball/profile_pages/profile_gestio/profile_gestio.php');
+			exit();
+		}
+		elseif (password_verify($user_password,$user['user_password']) AND $user['verified']==3) { 
+			//We log the new user into his profile page
+			$_SESSION['id']=$user['id'];
+			$_SESSION['token']=$user['token'];
+			$_SESSION['username']=$user['username'];
+			$_SESSION['email']=$user['email'];
+			$_SESSION['nom']=$user_profile['nom'];
+			$_SESSION['prenom']=$user_profile['prenom'];
+			$_SESSION['age']=$user_profile['age'];
+			$_SESSION['naissance']=$user_profile['naissance'];
+			$_SESSION['addresse']=$user_profile['addresse'];
+			$_SESSION['club']=$user['club'];
+			header('location:http://localhost:8888/airball/profile_pages/profile_admin/profile_admin.php');
 			exit();
 		}
 		elseif(!password_verify($user_password,$user['user_password'])){
@@ -539,9 +555,6 @@ while ($row = $stmt->fetch()) {
 		$nombre_tests_temperature+=1;
 	}
 }
-
-
-
 
 //in this part we destroy the session if the user logs out
 if (isset($_POST['logout'])) {

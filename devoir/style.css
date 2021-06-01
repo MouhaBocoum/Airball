@@ -1,0 +1,19 @@
+
+.quiz {
+  border: 10px solid purple;
+  padding: 50px;
+  margin: 20px;
+  
+}
+
+input[type=submit], input[type=reset],input[type=text]{
+  width: 40%;
+  background-color: #E8D0F4;
+  border : 1px solid black ;
+}
+
+.message {
+  color:red;
+}
+
+

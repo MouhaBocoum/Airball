@@ -11,13 +11,13 @@
 </head>
 
 <body>
-    <div class="header">
-        <a href="http://localhost:8888/airball/basic_pages/index_airball.php"><img src="../../style_connect/styles/img/airball.png" alt="Airball" width="160" height="60"></a>
-        <div class="links">
-            <a href="http://localhost:8888/airball/basic_pages/index_airball.php" name="logout">Me déconnecter</a>
-        </div>
-    </div>
-    <div class="container_gestio">
+    <div>
+        <!--THIS PART OF THE CODE CORRESPONDS TO THE PROFILE OF A VERIFIED USER-->
+        <h1>Bonjour,<?php echo $_SESSION['club'] ?></h1>
+        <h2>Merci d'avoir crée un compte chez Airball</h2>
+        <h3>Votre compte a été vérifié</h3>
+        <a href="http://localhost:8888/airball/basic_pages/index_airball.php">Déconnexion</a>
+
         <html class="listusers">
         <h1>liste joueurs</h1>
 
@@ -29,7 +29,7 @@
                             <th class="col">identifiant <br> <input type="text" class="searchbars" name="idsearch" value=<?php if (isset($_POST["idsearch"]))     echo $_POST["idsearch"];      ?>></th>
                             <th class="col">prénom <br> <input type="text" class="searchbars" name="prenomsearch" value=<?php if (isset($_POST["prenomsearch"])) echo $_POST["prenomsearch"]; ?>></th>
                             <th class="col">nom <br> <input type="text" class="searchbars" name="nomsearch" value=<?php if (isset($_POST["nomsearch"]))    echo $_POST["nomsearch"];    ?>></th>
-                            <th class="col">username <br> <input type="text" class="searchbars" name="idusearch" value=<?php if (isset($_POST["idusearch"]))    echo $_POST["idusearch"];    ?>></th>
+                            <th class="col">identifiant <br> <input type="text" class="searchbars" name="idusearch" value=<?php if (isset($_POST["idusearch"]))    echo $_POST["idusearch"];    ?>></th>
 
                             <th> <input type="submit" style="height : 47px;" value='rechercher' class="searchbutton"></th>
                         </tr>
@@ -163,9 +163,6 @@
                 document.getElementById("modifyajax").innerHTML = "";
             }
         </script>
-    </div>
-    <div class="footer">
-        <p>&copy;2021 By Airball</p>
     </div>
 </body>
 

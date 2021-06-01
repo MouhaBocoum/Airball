@@ -3,6 +3,7 @@
 //we will be sending those emails by using the swiftmailer library
 require_once 'vendor/autoload.php';
 
+
 // Create the Transport
 //the transport is an email server that is responsible for forwarding and receiving emails
 $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465,'ssl'))

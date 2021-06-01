@@ -16,7 +16,7 @@
             <li><a href="http://localhost:8888/airball/basic_pages/index_airball.php">Accueil</a>
                 <div></div>
             </li>
-            <li><a href="#">Notre produit</a>
+            <li><a href="http://localhost:8888/airball/basic_pages/produit.php">Notre produit</a>
                 <div></div>
             </li>
             <li><a href="http://localhost:8888/airball/basic_pages/FAQ.php">FAQ</a>
