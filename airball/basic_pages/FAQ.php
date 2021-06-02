@@ -25,6 +25,9 @@
             <li><a href="http://localhost:8888/airball/basic_pages/mon_club.php">Inscrire mon club</a>
                 <div></div>
             </li>
+            <li><a href="http://localhost:8888/airball/basic_pages/cgu.php">CGU</a>
+                <div></div>
+            </li>
         </ul>
         <h1>FAQ</h1>
     </div>
