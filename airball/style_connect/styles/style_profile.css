@@ -23,7 +23,7 @@ body{
     margin-top: 20%;
 }
 .header{
-    background-color: rgb(118, 157, 170);
+    background-color: rgb(167,201,233);
     padding: 15px;
     display: flex;
     align-items: center;
@@ -48,7 +48,7 @@ body{
     border: 3px solid black;
     height: 80vh;
     border-radius: 10px;
-    box-shadow: 10px 5px 5px rgb(118, 157, 170);
+    box-shadow: 10px 5px 5px rgb(167,201,233);
 }
 .info_joueur{
     margin-right: 20px;
@@ -56,14 +56,14 @@ body{
     border: 3px solid black;
     height: 80vh;
     border-radius: 10px;
-    box-shadow: 10px 5px 5px rgb(118, 157, 170);
+    box-shadow: 10px 5px 5px rgb(167,201,233);
 }
 .info_joueur_left{
     height: 545px;
     text-align: center;
 }
 .info_joueur_left h1{
-    color: rgb(118, 157, 170);
+    color: rgb(167,201,233);
     font-size: 20px;
 }
 .info_joueur_left label{
@@ -77,7 +77,7 @@ body{
     align-items: center;
 }
 .footer{
-    background-color: rgb(118, 157, 170);
+    background-color: rgb(167,201,233);
     text-align: center;
     padding: 10px 0;
     color: white;
@@ -120,7 +120,7 @@ body{
 }
 .club button{
     cursor: pointer;
-    background:rgb(67, 103, 116);
+    background:rgb(89, 147, 201);
     border: 0;
     padding: 14px 35px;
     border-radius: 50px;
@@ -134,7 +134,7 @@ body{
 }
 .club{
     border-radius: 10px;
-    background-color: rgb(118, 157, 170);
+    background-color: rgb(167,201,233);
     display: flex;
     flex-direction: column;
     margin: 80px 300px;

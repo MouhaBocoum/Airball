@@ -16,13 +16,13 @@ body{
     padding: 10px;
 }
 .header{
-    background-color: rgb(118, 157, 170);
+    background-color: rgb(167,201,233);
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 .footer{
-    background-color: rgb(118, 157, 170);
+    background-color: rgb(167,201,233);
     text-align: center;
     color: white;
     font-size: 15px;
@@ -43,12 +43,12 @@ a, a:visited, a:hover{
 .resultats_test{
     border: 3px solid black;
     border-radius: 10px;
-    box-shadow: 10px 5px 5px rgb(118, 157, 170);
+    box-shadow: 10px 5px 5px rgb(167,201,233);
 }
 .repartition_test{
     border: 3px solid black;
     border-radius: 10px;
-    box-shadow: 10px 5px 5px rgb(118, 157, 170);
+    box-shadow: 10px 5px 5px rgb(167,201,233);
 }
 .down_panel{
     display: grid;
@@ -58,8 +58,8 @@ a, a:visited, a:hover{
 .input_value{
     border: 3px solid black;
     border-radius: 10px;
-    box-shadow: 10px 5px 5px rgb(118, 157, 170);
-    background-image: rgb(118, 157, 170);
+    box-shadow: 10px 5px 5px rgb(167,201,233);
+    background-image: rgb(167,201,233);
 }
 h3{
     display: flex;
@@ -79,7 +79,7 @@ form{
 }
 .input_value button{
     cursor: pointer;
-    background:rgb(118, 157, 170);
+    background:rgb(89, 147, 201);
     border: 0;
     padding: 14px 35px;
     border-radius: 50px;

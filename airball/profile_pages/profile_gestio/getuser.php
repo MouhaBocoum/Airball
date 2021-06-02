@@ -16,7 +16,6 @@ $sql = "SELECT * FROM profile_joueur WHERE id_user = '" . $idajax . "'";
 $result = mysqli_query($conn, $sql);
 
 if ($action == 0) { // affichage de la modification
-
     echo '<div class = "modify" style ="width:100%">';
     echo '<form action = "modifyuser.php" method="post" class = "modify" style ="width:100%">';
     echo '<table style="width:100%">';

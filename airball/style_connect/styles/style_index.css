@@ -24,13 +24,13 @@ body{
     position: absolute;
     opacity: 0;
     width: 100%;
-    background-image: rgb(118, 157, 170);
+    background-image: rgb(167,201,233);
     transition: opacity 500ms ease-in-out;
 }
 .overlay.open{
     opacity: 1;
     width: 100%;
-    background-image: rgb(118, 157, 170);
+    background-image: rgb(167,201,233);
     transition: opacity 500ms ease-in-out;
 }
 
@@ -53,7 +53,7 @@ ul.nav_bar_pc{
 }
 .nav_pc button{
     cursor: pointer;
-    background:rgb(118, 157, 170);;
+    background:rgb(89, 147, 201);
     border: 0;
     padding: 14px 35px;
     border-radius: 50px;
@@ -67,7 +67,7 @@ ul.nav_bar_pc{
     transition: opacity 500ms ease-in-out;
 }
 .nav_bar_pc div{
-    background: rgb(118, 157, 170);;
+    background: rgb(167,201,233);
     position: relative;
     width: 100%;
     height: 4px;
@@ -86,7 +86,7 @@ ul.nav_bar_pc{
 
 
 .hero{
-    background-color:rgb(118, 157, 170);
+    background-color:rgb(167,201,233);
     padding: 200px ;
     display: flex;
     justify-content: center;
@@ -146,7 +146,7 @@ ul.nav_bar_pc{
 }
 .connection button{
     cursor: pointer;
-    background:rgb(118, 157, 170);
+    background:rgb(89, 147, 201);
     border: 0;
     padding: 14px 35px;
     border-radius: 50px;
@@ -189,7 +189,7 @@ ul.nav_bar_pc{
 
 }
 .panels{
-	background: rgb(137, 187, 204);
+	background: rgb(167,201,233);
 	background-position: 0 0;
 	color: white;
 	position: relative;
